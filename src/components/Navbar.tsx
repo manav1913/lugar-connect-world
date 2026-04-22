@@ -15,8 +15,10 @@ const Navbar = () => {
         <div>
             <nav className='navbar'>
 
-                <Link to={"/"}>
-                    <img className='logo' src={logo} alt="" />
+                <Link to="/">
+                    <div className="logo-wrapper">
+                        <img className="logo" src={logo} alt="" />
+                    </div>
                 </Link>
                 {/* Desktop links */}
                 <div className='nav-links'>
@@ -36,8 +38,8 @@ const Navbar = () => {
                 <div className="auth-section">
                     {user ? (
                         <div className="user-info">
-                            {user.user_metadata.avatar_url &&(
-                                <img  className="avatar"  src={user.user_metadata.avatar_url} alt="" />
+                            {user.user_metadata.avatar_url && (
+                                <img className="avatar" src={user.user_metadata.avatar_url} alt="" />
                             )}
                             <span className="username">{displayName}</span>
                             <button className="logout-btn" onClick={signOut}>
@@ -54,13 +56,23 @@ const Navbar = () => {
 
 
                 {/* Mobile Menu */}
-
                 {menuOpen && (
                     <div className='mobile-menu'>
-                        <Link to={"/"}>Home</Link>
-                        <Link to={"/create"}>Create Post</Link>
-                        <Link to={"/communities"}>Communities</Link>
-                        <Link to={"/community/create"}>Create Community</Link>
+                        <Link to="/" onClick={() => setMenuOpen(false)}>Home</Link>
+                        <Link to="/create" onClick={() => setMenuOpen(false)}>Create Post</Link>
+                        <Link to="/communities" onClick={() => setMenuOpen(false)}>Communities</Link>
+                        <Link to="/community/create" onClick={() => setMenuOpen(false)}>Create Community</Link>
+
+                        {user ? (
+                            <button className="logout-btn" onClick={signOut}>
+                                Sign Out
+                            </button>
+                        ) : (
+                            <button className="github-btn" onClick={signInWithGitHub}>
+                                <FontAwesomeIcon icon={faSquareGithub} size="lg" />
+                                <span>Sign in with GitHub</span>
+                            </button>
+                        )}
                     </div>
                 )}
 

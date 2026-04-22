@@ -1,156 +1,209 @@
 .navbar {
+  width: min(1180px, calc(100% - 32px));
+  margin: 18px auto;
+  padding: 14px 18px;
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 25px;
-  border-bottom: 2px solid var(--primary);
-  position: relative;
+  gap: 18px;
+
+  background: rgba(10, 18, 32, 0.72);
+  border: 1px solid rgba(124, 196, 255, 0.14);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+
+  border-radius: 20px;
+  position: sticky;
+  top: 14px;
+  z-index: 1000;
 }
 
-/* Logo */
 .logo {
-  height: 80px;
-  margin-left: 40px;
+  width: 44px;
+  height: 44px;
+  object-fit: contain;
+  filter: brightness(1.2);
 }
 
-/* Desktop links */
+.logo-wrapper {
+  padding: 6px;
+  border-radius: 12px;
+  background: rgba(124, 196, 255, 0.08);
+  border: 1px solid rgba(124, 196, 255, 0.15);
+}
 .nav-links {
   display: flex;
-  gap: 20px;
-  margin-left: 90px;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  margin-left: 8px;
 }
 
 .nav-links a {
-  text-decoration: none;
-  color: var(--text);
+  color: var(--text-light);
+  font-size: 14px;
   font-weight: 500;
-  transition: 0.2s;
+  padding: 10px 14px;
+  border-radius: 12px;
+  transition: all 0.22s ease;
 }
 
 .nav-links a:hover {
-  color: var(--primary);
+  color: var(--text);
+  background: rgba(77, 163, 255, 0.08);
 }
 
-/* Hamburger */
 .menu-btn {
+  width: 44px;
+  height: 44px;
   display: none;
-  font-size: 22px;
-  background: none;
-  border: none;
-  color: var(--primary);
-  cursor: pointer;
-}
-
-/* Mobile menu */
-.mobile-menu {
-  position: absolute;
-  top: 70px;
-  right: 0;
-  width: 220px;
-  background: var(--surface);
-  border-left: 2px solid var(--primary);
-  border-bottom: 2px solid var(--primary);
-  display: flex;
-  flex-direction: column;
-  padding: 15px;
-  gap: 10px;
-}
-
-.mobile-menu a {
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(124, 196, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(17, 29, 48, 0.85);
   color: var(--text);
-  text-decoration: none;
-}
-
-.mobile-menu a:hover {
-  color: var(--primary);
-}
-
-/* Wrapper */
-.auth-section {
-  display: flex;
-  align-items: center;
-}
-
-/* Logged-in container */
-.user-info {
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-/* Avatar */
-.avatar {
-  width: 34px;
-  height: 34px;
-  border-radius: 50%;
-  object-fit: cover;
-  border: 2px solid var(--primary);
-}
-
-/* Username */
-.username {
-  font-weight: 500;
-  color: var(--text);
-  font-size: 14px;
-}
-
-/* Logout button */
-.logout-btn {
-  background: transparent;
-  color: var(--primary);
-  border: 1px solid var(--primary);
-  padding: 6px 12px;
-  border-radius: 8px;
-  font-size: 13px;
-  cursor: pointer;
-  transition: 0.2s;
-}
-
-.logout-btn:hover {
-  background: var(--primary);
-  color: white;
-}
-
-/* GitHub login button */
-.github-btn {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-
-  background: var(--primary);
-  color: white;
-  border: none;
-  border-radius: 10px;
-
-  padding: 8px 14px;
-  font-size: 14px;
-  font-weight: 500;
-
   cursor: pointer;
   transition: all 0.2s ease;
 }
 
-.github-btn svg {
+.menu-btn:hover {
+  background: rgba(77, 163, 255, 0.12);
+  border-color: rgba(124, 196, 255, 0.28);
+}
+
+.menu-btn svg {
   font-size: 18px;
 }
 
+.auth-section {
+  display: flex;
+  align-items: center;
+  margin-left: auto;
+}
+
+.user-info {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 6px 8px 6px 6px;
+  background: rgba(17, 29, 48, 0.78);
+  border: 1px solid rgba(124, 196, 255, 0.14);
+  border-radius: 999px;
+}
+
+.avatar {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgba(77, 163, 255, 0.35);
+  display: block;
+}
+
+.username {
+  max-width: 140px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  color: var(--text);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.github-btn,
+.logout-btn {
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.github-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+  color: white;
+  padding: 11px 16px;
+  border-radius: 14px;
+  font-size: 14px;
+  font-weight: 600;
+  box-shadow: 0 8px 20px rgba(77, 163, 255, 0.2);
+}
+
 .github-btn:hover {
-  background: var(--primary-dark);
   transform: translateY(-1px);
+  box-shadow: 0 12px 24px rgba(77, 163, 255, 0.28);
 }
 
-.github-btn:active {
-  transform: scale(0.98);
+.logout-btn {
+  background: transparent;
+  color: var(--text-light);
+  padding: 9px 12px;
+  border-radius: 12px;
 }
 
+.logout-btn:hover {
+  background: rgba(77, 163, 255, 0.1);
+  color: var(--text);
+}
 
-/* Responsive */
-@media (max-width: 768px) {
-  .nav-links {
+.mobile-menu {
+  position: absolute;
+  top: calc(100% + 12px);
+  left: 0;
+  right: 0;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  padding: 12px;
+  background: rgba(10, 18, 32, 0.96);
+  border: 1px solid rgba(124, 196, 255, 0.14);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.35);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+}
+
+.mobile-menu a {
+  color: var(--text-light);
+  padding: 12px 14px;
+  border-radius: 12px;
+  transition: all 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  background: rgba(77, 163, 255, 0.1);
+  color: var(--text);
+}
+
+@media (max-width: 992px) {
+  .username {
+    display: none;
+  }
+}
+
+@media (max-width: 860px) {
+  .nav-links,
+  .auth-section {
     display: none;
   }
 
   .menu-btn {
-    display: block;
+    display: inline-flex;
+  }
+
+  .mobile-menu {
+    display: flex;
+  }
+
+  .navbar {
+    padding: 12px 14px;
+  }
+
+  .logo {
+    width: 44px;
+    height: 44px;
   }
 }
