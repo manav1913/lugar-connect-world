@@ -10,7 +10,7 @@ interface Props{
 const PostItem = ({post}:Props) => {
   return (
     <div>
-      <Link to='/post' className='post-card'>
+      <Link to={`/post/${post.id}`} className='post-card'>
         <div className="post-image">
         <img src={post.image_url} alt={post.title} />
       </div>
