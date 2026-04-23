@@ -1,0 +1,52 @@
+.community-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 1.2rem;
+  padding: 1rem;
+}
+
+.community-card {
+  display: block;
+  text-decoration: none;
+
+  background: var(--surface);
+  border: 1px solid var(--border);
+  backdrop-filter: var(--blur);
+  -webkit-backdrop-filter: var(--blur);
+
+  border-radius: 18px;
+  padding: 1.2rem;
+
+  box-shadow: var(--shadow);
+
+  transition: 0.2s ease;
+}
+
+.community-card:hover {
+  transform: translateY(-4px);
+  background: var(--surface-hover);
+}
+
+.community-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.4rem;
+  color: var(--text);
+}
+
+.community-card p {
+  font-size: 0.9rem;
+  color: var(--text-light);
+  margin-bottom: 0.6rem;
+  line-height: 1.5;
+}
+
+.community-date {
+  font-size: 0.75rem;
+  color: var(--text-light);
+}
+
+.community-status {
+  text-align: center;
+  padding: 2rem;
+  color: var(--text-light);
+}
