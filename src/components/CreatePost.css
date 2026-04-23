@@ -142,6 +142,57 @@
   transform: scale(0.97);
 }
 
+
+.form-group select {
+  width: 100%;
+  padding: 0.7rem 0.8rem;
+
+  border-radius: 10px;
+  border: 1px solid var(--border);
+
+  background: var(--bg-soft);
+  color: var(--text);
+
+  font-size: 14px;
+  outline: none;
+
+  transition: 0.2s ease;
+  cursor: pointer;
+
+  appearance: none;
+}
+
+
+.form-group select:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 2px var(--ring);
+}
+
+
+.form-group {
+  position: relative;
+}
+
+.form-group select {
+  padding-right: 2.2rem;
+}
+
+.form-group::after {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-light);
+  pointer-events: none;
+  font-size: 14px;
+}
+
+
+.form-group select option {
+  background: #1f0b11;
+  color: var(--text);
+}
+
 @media (max-width: 768px) {
   .create-post-form {
     max-width: 100%;
