@@ -84,18 +84,22 @@ const toggleLike = async ({
 
     if (error) throw new Error(error.message)
 
-    return
+    return { liked: false }
   }
 
-  const { error } = await supabase
+  const { data, error } = await supabase
     .from('votes')
     .insert({
       post_id: postId,
       user_id: user.id,
       vote: 1,
     })
+    .select('id')
+    .single()
 
   if (error) throw new Error(error.message)
+
+  return { liked: true, voteRowId: data.id }
 }
 
 const LikeButton = ({ postId }: Props) => {
@@ -108,11 +112,36 @@ const LikeButton = ({ postId }: Props) => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: toggleLike,
-    onSuccess: () => {
-      queryClient.invalidateQueries({ queryKey: ['votes', postId] })
+    onMutate: async ({ liked, voteRowId }) => {
+      await queryClient.cancelQueries({ queryKey: ['votes', postId] })
+
+      const previousData = queryClient.getQueryData<VoteData>(['votes', postId])
+
+      queryClient.setQueryData<VoteData>(['votes', postId], (old) => {
+        if (!old) {
+          return {
+            count: liked ? 0 : 1,
+            liked: !liked,
+            voteRowId: liked ? null : voteRowId,
+          }
+        }
+
+        return {
+          count: liked ? Math.max(0, old.count - 1) : old.count + 1,
+          liked: !liked,
+          voteRowId: liked ? null : old.voteRowId,
+        }
+      })
+
+      return { previousData }
     },
-    onError: (error) => {
-      console.error('toggle like error:', error)
+    onError: (_error, _variables, context) => {
+      if (context?.previousData) {
+        queryClient.setQueryData(['votes', postId], context.previousData)
+      }
+    },
+    onSettled: () => {
+      queryClient.invalidateQueries({ queryKey: ['votes', postId] })
     },
   })
 
