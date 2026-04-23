@@ -13,6 +13,20 @@
   margin-bottom: 1rem;
 }
 
+.thread-actions {
+  display: flex;
+  gap: 1rem;
+  margin-bottom: 0.6rem;
+}
+
+.thread-toggle-btn {
+  border: none;
+  background: transparent;
+  color: var(--primary);
+  font-weight: 600;
+  cursor: pointer;
+  padding: 0;
+}
 .comment-form {
   display: flex;
   flex-direction: column;
