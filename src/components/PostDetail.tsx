@@ -36,25 +36,33 @@ const PostDetail = () => {
 
   return (
     <div className="post-detail">
-      <div className="post-detail-container">
-        <h1 className="post-title">{data?.title}</h1>
 
-        {data && (
-          <p className="post-date">
-            Posted on {new Date(data.created_at).toDateString()}
-          </p>
-        )}
+      <div className="post-hero">
+        <img src={data?.image_url} alt={data?.title} />
 
-        <div className="post-image-wrapper">
-          <img src={data?.image_url} alt={data?.title} />
+        <div className="post-hero-overlay">
+          <h1 className="post-hero-title">{data?.title}</h1>
+
+          {data && (
+            <p className="post-hero-date">
+              {new Date(data.created_at).toDateString()}
+            </p>
+          )}
         </div>
-
-        <div className="post-actions">
-          <LikeButton postId={postId} />
-        </div>
-
-        <p className="post-content">{data?.content}</p>
       </div>
+
+      <div className="post-body">
+        <div className="post-body-container">
+
+          <div className="post-actions">
+            <LikeButton postId={postId} />
+          </div>
+
+          <p className="post-content">{data?.content}</p>
+
+        </div>
+      </div>
+
     </div>
   )
 }
