@@ -1,4 +1,3 @@
-import React from 'react'
 import './LikeButton.css'
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query'
 import { supabase } from '../supabase-client'

@@ -1,4 +1,3 @@
-import React from 'react'
 import CreateCommunity from '../components/CreateCommunity'
 
 const CreateCommunityPage = () => {

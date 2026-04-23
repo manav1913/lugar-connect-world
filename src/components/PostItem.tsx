@@ -1,4 +1,3 @@
-import React from 'react'
 import type { Post } from './PostList'
 import { Link } from 'react-router'
 import "./PostItem.css"
